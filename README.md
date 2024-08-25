@@ -10,7 +10,7 @@ Welcome, Login and Signup with Reat Native
 
 App Flow
 
-<img src="https://github.com/user-attachments/assets/26deb56c-493b-497c-9e38-b815b182cee1" width="250" height="450">
+<img src="https://github.com/user-attachments/assets/26deb56c-493b-497c-9e38-b815b182cee1" width="250" height="500">
 
 ## Technologies
 I used https://reactnavigation.org
