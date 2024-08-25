@@ -1,29 +1,34 @@
 import {
   Image,
+  ImageBackground,
   StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
   View,
 } from "react-native";
-import React, { useState } from "react"; import { colors } from "../utils/colors";
+import React, { useState } from "react";
+import { colors } from "../utils/colors";
 import { fonts } from "../utils/fonts";
 import { useNavigation } from "@react-navigation/native";
 
 const LoginScreen = () => {
-
   const navigation = useNavigation();
   const [secureEntery, setSecureEntery] = useState(true);
 
   const handleGoBack = () => {
     navigation.goBack();
   };
+
   const handleSignup = () => {
     navigation.navigate("Signup");
   };
 
   return (
-    <View style={styles.container}>
+    <ImageBackground
+      source={require("../images/background.png")} // Your background image path
+      style={styles.container}
+    >
       <TouchableOpacity style={styles.backButtonWrapper} onPress={handleGoBack}>
         <Image
           source={require("../images/arrow_back.png")}
@@ -38,27 +43,27 @@ const LoginScreen = () => {
         <View style={styles.inputContainer}>
           <Image
             source={require("../images/email.png")}
-            style={{ width: 25, height: 25 }}
+            style={{ width: 25, height: 25,}}
           />
           <TextInput
             style={styles.textInput}
             placeholder="Ingresa tu email"
-            placeholderTextColor={colors.secondary}
+            placeholderTextColor={colors.white}
             keyboardType="email-address"
           />
         </View>
         <View style={styles.inputContainer}>
-        <Image
+          <Image
             source={require("../images/lock.png")}
             style={{ width: 25, height: 25 }}
           />
           <TextInput
             style={styles.textInput}
             placeholder="Ingresa tu contraseña"
-            placeholderTextColor={colors.secondary}
+            placeholderTextColor={colors.white}
             secureTextEntry={secureEntery}
           />
-            <Image
+          <Image
             source={require("../images/eye.png")}
             style={{ width: 25, height: 25 }}
           />
@@ -66,41 +71,39 @@ const LoginScreen = () => {
             onPress={() => {
               setSecureEntery((prev) => !prev);
             }}
-          >          
-          </TouchableOpacity>          
-        </View>        
-      </View>
-      <TouchableOpacity>
-          <Text style={styles.forgotPasswordText}>¿Olvidaste tu contraseña?</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.loginButtonWrapper}>
-          <Text style={styles.loginText}>E n t r a r</Text>
-        </TouchableOpacity>
-        <Text style={styles.continueText}>o</Text>
-        <TouchableOpacity style={styles.googleButtonContainer}>
-          <Image
-            source={require("../images/google.png")}
-            style={styles.googleImage}
-          />
-          <Text style={styles.googleText}>Continuar con Google</Text>
-        </TouchableOpacity>
-        <View style={styles.footerContainer}>
-          <Text style={styles.accountText}>¿No tienes cuenta?</Text>
-          <TouchableOpacity onPress={handleSignup}>
-            <Text style={styles.signupText}>Registrate</Text>
+          >
           </TouchableOpacity>
         </View>
-    </View>
-  )
-}
+      </View>
+      <TouchableOpacity>
+        <Text style={styles.forgotPasswordText}>¿Olvidaste tu contraseña?</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.loginButtonWrapper}>
+        <Text style={styles.loginText}>E n t r a r</Text>
+      </TouchableOpacity>
+      <Text style={styles.continueText}>o</Text>
+      <TouchableOpacity style={styles.googleButtonContainer}>
+        <Image
+          source={require("../images/google.png")}
+          style={styles.googleImage}
+        />
+        <Text style={styles.googleText}>Continuar con Google</Text>
+      </TouchableOpacity>
+      <View style={styles.footerContainer}>
+        <Text style={styles.accountText}>¿No tienes cuenta?</Text>
+        <TouchableOpacity onPress={handleSignup}>
+          <Text style={styles.signupText}>Registrate</Text>
+        </TouchableOpacity>
+      </View>
+    </ImageBackground>
+  );
+};
 
-export default LoginScreen
-
+export default LoginScreen;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.white,
     padding: 20,
   },
   backButtonWrapper: {
@@ -116,7 +119,7 @@ const styles = StyleSheet.create({
   },
   headingText: {
     fontSize: 32,
-    color: colors.primary,
+    color: colors.white,
     fontFamily: fonts.SemiBold,
   },
   formContainer: {
@@ -124,7 +127,7 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     borderWidth: 1,
-    borderColor: colors.secondary,
+    borderColor: colors.white,
     borderRadius: 100,
     paddingHorizontal: 20,
     flexDirection: "row",
@@ -139,7 +142,7 @@ const styles = StyleSheet.create({
   },
   forgotPasswordText: {
     textAlign: "right",
-    color: colors.primary,
+    color: colors.white,
     fontFamily: fonts.SemiBold,
     marginVertical: 10,
   },
@@ -179,6 +182,7 @@ const styles = StyleSheet.create({
   googleText: {
     fontSize: 14,
     fontFamily: fonts.SemiBold,
+    color: colors.white,
   },
   footerContainer: {
     flexDirection: "row",
@@ -188,7 +192,7 @@ const styles = StyleSheet.create({
     gap: 5,
   },
   accountText: {
-    color: colors.primary,
+    color: colors.white,
     fontFamily: fonts.Regular,
   },
   signupText: {
