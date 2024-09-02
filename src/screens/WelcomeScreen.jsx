@@ -1,13 +1,11 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { colors } from "../utils/colors";
-import { fonts } from "../utils/fonts";
-import React from 'react'
+import { Image, Text, TouchableOpacity, View } from "react-native";
+import React from 'react';
+import styles from "../styles/WelcomeStyles"; // Import the refactored styles
 import { useNavigation } from "@react-navigation/native";
 
 const WelcomeScreen = () => {
-
   const navigation = useNavigation();
-  
+
   const handleLogin = () => {
     navigation.navigate("Login");
   };
@@ -15,6 +13,7 @@ const WelcomeScreen = () => {
   const handleSignup = () => {
     navigation.navigate("Signup");
   };
+
   return (
     <View style={styles.container}>
       <Image source={require("../images/logo.png")} style={styles.logo} />
@@ -24,82 +23,26 @@ const WelcomeScreen = () => {
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore
       </Text>
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity
-          style={[
-            styles.loginButtonWrapper,
-            { backgroundColor: colors.primary },
-          ]}
-          onPress={handleLogin}
-        >
-          <Text style={styles.loginButtonText}>Entrar</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={[styles.loginButtonWrapper]}
-          onPress={handleSignup}
-        >
-          <Text style={styles.signupButtonText}>Registro</Text>
-        </TouchableOpacity>
+      <View style={styles.buttonsInRowContainer}>
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
+            <Text style={styles.loginText}>Entrar</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.registerButton} onPress={handleSignup}>
+            <Text style={styles.registerText}>Registrarse</Text>
+          </TouchableOpacity>
+        </View>
       </View>
+      <Text style={styles.continueText}>ó</Text>
+      <TouchableOpacity style={styles.googleButtonContainer}>
+        <Image
+          source={require("../images/google.png")}
+          style={styles.googleImage}
+        />
+        <Text style={styles.googleText}>Continuar con Google</Text>
+      </TouchableOpacity>
     </View>
   );
 };
-export default WelcomeScreen
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.white,
-    alignItems: "center",
-  },
-  logo: {
-    height: 40,
-    width: 140,
-    marginVertical: 15,
-  },
-  bannerImage: {
-    marginVertical: 20,
-    height: 250,
-    width: 231,
-  },
-  title: {
-    fontSize: 28,
-    fontFamily: fonts.SemiBold,
-    paddingHorizontal: 10,
-    textAlign: "center",
-    color: colors.primary,
-    marginTop: 20,
-  },
-  subTitle: {
-    fontSize: 16,
-    paddingHorizontal: 20,
-    textAlign: "center",
-    color: colors.secondary,
-    fontFamily: fonts.Medium,
-    marginVertical: 10,
-  },
-  buttonContainer: {
-    marginTop: 10,
-    flexDirection: "row",
-    borderWidth: 2,
-    borderColor: colors.primary,
-    width: "80%",
-    height: 60,
-    borderRadius: 100,
-  },
-  loginButtonWrapper: {
-    justifyContent: "center",
-    alignItems: "center",
-    width: "50%",
-    borderRadius: 98,
-  },
-  loginButtonText: {
-    color: colors.white,
-    fontSize: 16,
-    fontFamily: fonts.SemiBold,
-  },
-  signupButtonText: {
-    fontSize: 16,
-    fontFamily: fonts.SemiBold,
-  },
-});
+export default WelcomeScreen;
